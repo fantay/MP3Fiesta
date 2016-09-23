@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -31,6 +32,11 @@ public class Album implements Serializable {
     /* jointure vers piste */
     @OneToMany(mappedBy = "album")
     private List<Piste> pistes = new ArrayList<>();
+    
+    /* jointure vers Artiste */
+    @ManyToMany
+    private List<Artiste> artistes = new ArrayList<>();
+    
 
     public Long getId() {
         return id;

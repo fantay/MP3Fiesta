@@ -27,7 +27,7 @@ public class Utilisateur implements Serializable {
     private Long id;
 
     @OneToMany(mappedBy = "utilisateur")
-    List<Achat> achats = new ArrayList<>();
+    private List<Achat> achats = new ArrayList<>();
 
     public Long getId() {
         return id;

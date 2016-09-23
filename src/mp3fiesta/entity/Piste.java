@@ -6,11 +6,14 @@
 package mp3fiesta.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
@@ -28,6 +31,9 @@ public class Piste implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_achat")
     private Achat achat;
+    
+    @ManyToMany
+    private List<Chart> charts = new ArrayList<>();
 
     public Long getId() {
         return id;

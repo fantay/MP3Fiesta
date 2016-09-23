@@ -35,7 +35,7 @@ public class Achat implements Serializable {
     private Utilisateur utilisateur;
     
     @OneToMany(mappedBy = "achat")
-    List<Piste> pistes = new ArrayList<>();
+    private List<Piste> pistes = new ArrayList<>();
     
     /* getter & setter */
 

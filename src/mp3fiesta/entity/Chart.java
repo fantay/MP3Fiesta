@@ -31,7 +31,7 @@ public class Chart implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "chart_piste")
-    List<Piste> pistes = new ArrayList<>();
+    private List<Piste> pistes = new ArrayList<>();
     
     public Long getId() {
         return id;

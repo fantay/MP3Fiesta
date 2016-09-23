@@ -8,6 +8,7 @@
     <class>mp3fiesta.entity.Chart</class>
     <class>mp3fiesta.entity.CategorieChart</class>
     <class>mp3fiesta.entity.Album</class>
+    <class>mp3fiesta.entity.Artiste</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.user" value="app"/>

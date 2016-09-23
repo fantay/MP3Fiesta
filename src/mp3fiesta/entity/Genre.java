@@ -12,7 +12,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -20,26 +23,29 @@ import javax.persistence.OneToMany;
  * @author Laurent-LIM
  */
 @Entity
-public class Album implements Serializable {
+public class Genre implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private Integer dateSortie;
-    
-    /* jointure vers piste */
-    @OneToMany(mappedBy = "album")
-    private List<Piste> pistes = new ArrayList<>();
-    
-    /* jointure vers Artiste */
+    /* jointure vers Album */
     @ManyToMany
-    private List<Artiste> artistes = new ArrayList<>();
+    @JoinTable(name = "genre_album")
+    private List<Album> albums = new ArrayList<>();
     
-    /* jointure vers genre */
-    @ManyToMany
-    private List<Genre> genres = new ArrayList<>();
+    
+    /* jointure vers Genre en OneToMany , ManyToOne
+        une jointure d'une table sur elle même permet
+        de faire des sous categorie de cette table 
+    */
+    @ManyToOne
+    @JoinColumn(name = "genre_parent")
+    private Genre parentGenre;
+    
+    @OneToMany(mappedBy = "parentGenre")
+    private List<Genre> sousCategorie = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -59,10 +65,10 @@ public class Album implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Album)) {
+        if (!(object instanceof Genre)) {
             return false;
         }
-        Album other = (Album) object;
+        Genre other = (Genre) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -71,7 +77,7 @@ public class Album implements Serializable {
 
     @Override
     public String toString() {
-        return "mp3fiesta.entity.Album[ id=" + id + " ]";
+        return "mp3fiesta.entity.Genre[ id=" + id + " ]";
     }
     
 }

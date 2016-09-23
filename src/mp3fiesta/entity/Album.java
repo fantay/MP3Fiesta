@@ -6,44 +6,22 @@
 package mp3fiesta.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Laurent-LIM
  */
 @Entity
-public class Piste implements Serializable {
+public class Album implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    /* jointure vers Achat.java*/
-    @ManyToOne
-    @JoinColumn(name = "id_achat")
-    private Achat achat;
-    
-    /* jointure vers Chart.java */
-    @ManyToMany
-    private List<Chart> charts = new ArrayList<>();
-    
-    /* jointure vers album.java */
-    @ManyToOne
-    @JoinColumn(name = "id_album")
-    private Album album;
-    
-    
-    
 
     public Long getId() {
         return id;
@@ -63,10 +41,10 @@ public class Piste implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Piste)) {
+        if (!(object instanceof Album)) {
             return false;
         }
-        Piste other = (Piste) object;
+        Album other = (Album) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -75,7 +53,7 @@ public class Piste implements Serializable {
 
     @Override
     public String toString() {
-        return "mp3fiesta.entity.Piste[ id=" + id + " ]";
+        return "mp3fiesta.entity.Album[ id=" + id + " ]";
     }
     
 }

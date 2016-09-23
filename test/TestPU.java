@@ -4,16 +4,25 @@
  * and open the template in the editor.
  */
 
+import javax.persistence.Persistence;
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author Laurent-LIM
  */
 public class TestPU {
-    
-    public TestPU() {
+
+    @Before
+    public void avant() {
+
+        Persistence.createEntityManagerFactory("PU");
+
     }
-    
+
+    @Test
+    public void test() {
+    }
+
 }

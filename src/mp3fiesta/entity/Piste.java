@@ -34,7 +34,7 @@ public class Piste implements Serializable {
     private Achat achat;
     
     /* jointure vers Chart.java */
-    @ManyToMany
+    @ManyToMany(mappedBy = "pistes")
     private List<Chart> charts = new ArrayList<>();
     
     /* jointure vers album.java */

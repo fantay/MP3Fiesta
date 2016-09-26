@@ -34,7 +34,7 @@ public class Album implements Serializable {
     private List<Piste> pistes = new ArrayList<>();
     
     /* jointure vers Artiste */
-    @ManyToMany
+    @ManyToMany(mappedBy = "albums")
     private List<Artiste> artistes = new ArrayList<>();
     
     /* jointure vers genre */
